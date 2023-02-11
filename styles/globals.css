@@ -9,13 +9,18 @@
     --toastify-color-dark: #171a3e !important;
   }
   body {
-    @apply font-[13px] bg-blue-100 dark:bg-[#05072c] text-slate-700 dark:text-slate-50;
+    @apply bg-blue-100 dark:bg-[#05072c] text-slate-700 dark:text-slate-50;
   }
   main {
     @apply grid grid-flow-row max-w-screen-sm gap-y-5 md:max-w-none md:p-10 md:gap-y-8 lg:p-[3.5rem] lg:max-h-screen xl:gap-x-10 xl:grid-flow-col xl:p-20 xl:grid-cols-[40%_60%];
   }
   main > * {
     @apply flex-1;
+  }
+  @media (min-width: 1280px) {
+    body {
+      font-size: 13px;
+    }
   }
 }
 

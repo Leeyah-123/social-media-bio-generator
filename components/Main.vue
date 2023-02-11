@@ -23,9 +23,9 @@
 					<span class="label-text !inline float-right text-sm">{{ 6- keywords.length }}/6 left</span>
 
 					<span
-						class="mt-2 flex gap-3 flex-wrap rounded-md text-slate-900 outline outline-1 p-2 outline-slate-200 dark:outline-slate-400">
+						class="mt-2 flex gap-3 flex-wrap rounded-md text-slate-900 outline outline-1 p-2 outline-slate-200 dark:outline-slate-400 xl:w-full">
 						<span v-for="keyword, index in keywords" :key="index"
-							class="bg-indigo-500 dark:bg-indigo-200 bg-opacity-20 min-w-20 text-sm px-4 py-2 rounded-full">
+							class="bg-indigo-500 dark:bg-indigo-200 bg-opacity-20 min-w-20 px-4 py-2 rounded-full">
 							<span>{{ keyword }}</span>
 							<button aria-label="remove keyword"
 								class="ml-2 rounded-full text-white dark:text-slate-700 bg-slate-700 dark:bg-slate-100 px-1.5"
@@ -34,7 +34,7 @@
 
 						<input v-if="keywords.length < 6" id="keywords" v-model="keywordRef"
 							class="form-input text-slate-700 dark:text-slate-50 !px-3 !py-2 w-auto" placeholder="Enter keyword"
-							@keydown.space="addKeyword" @keydown.enter="addKeyword" @keydown.,="addKeyword" />
+							@keyup="checkInput" @keydown.enter="addKeyword(keywordRef)" />
 					</span>
 
 				</label>
@@ -179,11 +179,31 @@ const resetFields = () => {
 	thirdPersonPovRef.value = null
 }
 
-const addKeyword = () => {
-console.log('called');
-	if (keywords.value.includes(keywordRef.value)) $toast.info("Keyword already added")
-	else if (keywordRef.value === "") $toast.error("Keyword field cannot be empty")
-	else keywords.value.push(keywordRef.value)
+const checkInput = () => {
+	let currentLetter = keywordRef.value.charAt(keywordRef.value.length - 1)
+
+	if (currentLetter === " " || currentLetter === ",") {
+		if (currentLetter === ",") {
+			if (keywordRef.value === ",") return keywordRef.value = "";
+		}
+		if (currentLetter === " ") {
+			if (keywordRef.value === " ") return keywordRef.value = "";
+		}
+
+		addKeyword(keywordRef.value)
+	}
+}
+
+const addKeyword = (keyword: string) => {
+	if (keywords.value.includes(keyword)) $toast.info("Keyword already added")
+	else if (keyword === "") $toast.error("Keyword field cannot be empty")
+	else {
+		// removing trailing or leading comma if exists
+		if (keyword.charAt(keyword.length - 1) === ',') keyword = keyword.slice(0, keyword.length - 1)
+		if (keyword.charAt(0) === ',') keyword = keyword.slice(1, keyword.length)
+
+		keywords.value.push(keyword.trim())
+	}
 
 	keywordRef.value = ""
 }
