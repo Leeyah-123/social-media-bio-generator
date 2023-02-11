@@ -28,20 +28,20 @@ export const generateBio = async (
       prompt = `From the following description: "${desc}", generate two funny ${platform} bios clearly labeled 1. and 2. for a person named ${name}.
 
     Make sure to throw in a joke in there and make sure to include each of the following keywords: ${keywords}. Write the bio from a ${pov} point of view and do not include any hashtags.
-    The generated bio should be no less than 300 words. 
+    The generated bio should be no less than 500 words. 
   `;
   } else {
     prompt = `From the following description: "${desc}", generate two ${vibe} ${platform} bios clearly labeled 1. and 2. for a person named ${name}.
 
     Make sure to include each of the following keywords: ${keywords}. Make sure to write the bio from a ${pov} point of view.
-    The generated bio should be no less than 300 words. 
+    The generated bio should be no less than 500 words. 
   `;
   }
 
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: prompt,
-    temperature: 0.5,
+    temperature: 0.9,
     max_tokens: 1000,
   });
 
