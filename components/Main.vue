@@ -180,7 +180,7 @@ const resetFields = () => {
 }
 
 const addKeyword = () => {
-console.log('called");
+console.log('called');
 	if (keywords.value.includes(keywordRef.value)) $toast.info("Keyword already added")
 	else if (keywordRef.value === "") $toast.error("Keyword field cannot be empty")
 	else keywords.value.push(keywordRef.value)
