@@ -81,7 +81,7 @@
 				</label>
 			</div>
 
-			<div class="flex items-center gap-3 mt-5 justify-end lg:mb-2">
+			<div class="flex items-center gap-3 mt-5 justify-end">
 				<button
 					class="btn border-[#0053EB] text-[#0053EB] bg-[#c9e1ed] hover:opacity-90 dark:border-[#206ebd] dark:text-[#206ebd] dark:bg-[#c9e1ed]"
 					@click="resetFields">reset</button>
