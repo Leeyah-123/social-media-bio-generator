@@ -34,7 +34,7 @@
 
 						<input v-if="keywords.length < 6" id="keywords" v-model="keywordRef"
 							class="form-input text-slate-700 dark:text-slate-50 !px-3 !py-2 w-auto" placeholder="Enter keyword"
-							@keydown.space="addKeyword" @keydown.enter="addKeyword" />
+							@keydown.space="addKeyword" @keydown.enter="addKeyword" @keydown.,="addKeyword" />
 					</span>
 
 				</label>
