@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --toastify-color-dark: #171a3e !important;
+  }
+  body {
+    @apply bg-blue-100 dark:bg-[#05072c] text-slate-700 dark:text-slate-50 2xl:max-h-screen;
+  }
+  main {
+    @apply grid grid-flow-row md:p-10 gap-y-5 lg:p-[3.5rem] md:gap-y-8 xl:gap-x-10 xl:grid-flow-col xl:place-items-center xl:p-20 xl:min-h-screen 2xl:grid-cols-[40%_60%] 2xl:max-h-screen;
+  }
+  main > * {
+    @apply flex-1;
+  }
+}
+
+@layer components {
+  .main,
+  .results {
+    @apply p-3 md:p-5 h-fit lg:h-full bg-slate-50 dark:bg-slate-700 md:rounded-lg lg:shadow lg:shadow-slate-400 xl:w-full;
+  }
+  .content {
+    @apply h-full flex flex-col justify-evenly;
+  }
+  .content > * {
+    @apply flex-1;
+  }
+  .theme-toggler {
+    @apply text-gray-500 dark:text-gray-400 lg:outline lg:outline-1 lg:outline-slate-300 lg:dark:outline-slate-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5;
+  }
+  .label-text {
+    @apply block font-light mb-2;
+  }
+  .form-input {
+    @apply w-full rounded-md outline outline-2 outline-slate-200 dark:outline-slate-400 py-3 px-6 font-extralight bg-transparent caret-slate-400;
+  }
+  .caret {
+    @apply border-b-2 border-b-black border-r-2 border-r-black rotate-45;
+  }
+  .btn {
+    @apply text-sm uppercase rounded-md px-7 py-3 border h-fit;
+  }
+  .select-option {
+    @apply dark:bg-slate-800;
+  }
+}
