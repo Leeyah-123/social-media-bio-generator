@@ -12,7 +12,7 @@
     @apply bg-blue-100 dark:bg-[#05072c] text-slate-700 dark:text-slate-50 2xl:max-h-screen;
   }
   main {
-    @apply grid grid-flow-row md:p-10 gap-y-5 lg:p-[3.5rem] md:gap-y-8 xl:gap-x-10 xl:grid-flow-col xl:place-items-center xl:p-20 xl:min-h-screen 2xl:grid-cols-[40%_60%] xl:max-h-screen;
+    @apply grid grid-flow-row md:p-10 gap-y-5 lg:p-[3.5rem] md:gap-y-8 xl:gap-x-10 xl:grid-flow-col xl:place-items-center xl:p-20  xl:max-h-screen xl:grid-cols-[40%_60%];
   }
   main > * {
     @apply flex-1;
@@ -25,7 +25,7 @@
     @apply p-4 h-fit bg-slate-50 dark:bg-slate-700 md:p-5 md:rounded-lg lg:h-full lg:shadow lg:shadow-slate-400 xl:w-full;
   }
   .content {
-    @apply h-full flex flex-col justify-evenly;
+    @apply flex flex-col justify-evenly;
   }
   .content > * {
     @apply flex-1;
