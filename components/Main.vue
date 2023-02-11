@@ -87,7 +87,7 @@
 					@click="resetFields">reset</button>
 				<button
 					class="btn bg-[#0053EB] border-[#0053EB] hover:opacity-90 text-[#c9e1ed] dark:bg-[#206ebd] dark:border-[#206ebd] dark:text-white"
-					@click="generate">
+					@click="generate" :disabled="loading">
 					<span :class="loading ? 'hidden' : 'block'">generate</span>
 
 					<!-- Button spinner -->
@@ -143,31 +143,26 @@ const loading = ref(false)
 
 // functions
 const generate = async () => {
-	// if (nameRef.value === '') return $toast.error('Please enter your name')
-	// if (descRef.value === '') return $toast.error('Please enter description')
-	// if (keywords.value.length === 0) return $toast.error('You must enter at least one keyword')
-	// if (firstPersonPovRef.value === null && secondPersonPovRef.value === null && thirdPersonPovRef.value === null) return $toast.error('Please select Point of View')
+	if (nameRef.value === '') return $toast.error('Please enter your name')
+	if (descRef.value === '') return $toast.error('Please enter description')
+	if (keywords.value.length === 0) return $toast.error('You must enter at least one keyword')
+	if (firstPersonPovRef.value === null && secondPersonPovRef.value === null && thirdPersonPovRef.value === null) return $toast.error('Please select Point of View')
 
 	loading.value = true;
 
-	// let pov;
+	let pov;
 
-	// if (firstPersonPovRef.value !== null) pov = 'First Person'
-	// else if (secondPersonPovRef.value !== null) pov = 'Second Person'
-	// else pov = 'Third Person'
+	if (firstPersonPovRef.value !== null) pov = 'First Person'
+	else if (secondPersonPovRef.value !== null) pov = 'Second Person'
+	else pov = 'Third Person'
 
-	// let generatedBios = await generateBio(nameRef.value, descRef.value, keywords.value, pov, vibeRef.value, platformRef.value);
+	let generatedBios = await generateBio(nameRef.value, descRef.value, keywords.value, pov, vibeRef.value, platformRef.value);
 
-	// results.value = []
-	// generatedBios?.substring(generatedBios.indexOf("1") + 3)
-	// 	.split("2. ").map((bio) => {
-	// 		results.value.push(bio)
-	// 	})
-
-	setTimeout(() => {
-		loading.value = false;
-	}, 5000)
-
+	results.value = []
+	generatedBios?.substring(generatedBios.indexOf("1") + 3)
+		.split("2. ").map((bio) => {
+			results.value.push(bio)
+		})
 }
 
 const resetFields = () => {
