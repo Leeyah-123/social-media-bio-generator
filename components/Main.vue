@@ -163,6 +163,7 @@ const generate = async () => {
 		.split("2. ").map((bio) => {
 			results.value.push(bio)
 		})
+		loading.value = false;
 }
 
 const resetFields = () => {
