@@ -34,7 +34,7 @@
 
 						<input v-if="keywords.length < 6" id="keywords" v-model="keywordRef"
 							class="form-input text-slate-700 dark:text-slate-50 !px-3 !py-2 w-auto" placeholder="Enter keyword"
-							@keyup.space="addKeyword" @keydown.enter="addKeyword" @keyup.,="addKeyword" />
+							@keydown.space="addKeyword" @keydown.enter="addKeyword" @keydown.,="addKeyword" />
 					</span>
 
 				</label>
@@ -180,6 +180,7 @@ const resetFields = () => {
 }
 
 const addKeyword = () => {
+console.log('called");
 	if (keywords.value.includes(keywordRef.value)) $toast.info("Keyword already added")
 	else if (keywordRef.value === "") $toast.error("Keyword field cannot be empty")
 	else keywords.value.push(keywordRef.value)
