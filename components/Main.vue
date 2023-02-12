@@ -49,7 +49,7 @@
 					</select>
 				</label>
 
-				<header class="mt-2 pb-2 border-b border-slate-200 dark:border-slate-400">
+				<header class="mt-2 pb-2 border-b border-slate-200 dark:border-slate-400 lg:mt-0">
 					<h1 class="font-black text-base">
 						More Customizations</h1>
 				</header>
@@ -163,7 +163,7 @@ const generate = async () => {
 		.split("2. ").map((bio) => {
 			results.value.push(bio)
 		})
-		loading.value = false;
+	loading.value = false;
 }
 
 const resetFields = () => {
