@@ -20,6 +20,7 @@
 				</label>
 				<label for="keywords">
 					<span class="label-text !inline">Keywords</span>
+					<span class="text-[10px]"> (press comma or enter to add keyword)</span>
 					<span class="label-text !inline float-right text-sm">{{ 6- keywords.length }}/6 left</span>
 
 					<span
@@ -60,11 +61,11 @@
 						<input type="radio" name="radio" id="firstPerson" value="First Person" v-model="firstPersonPovRef" />
 						<span class="ml-2 text-slate-700 dark:text-slate-200">First Person</span>
 					</label>
-					<label>
+					<label for="secondPerson">
 						<input type="radio" name="radio" id="secondPerson" v-model="secondPersonPovRef" />
 						<span class="ml-2 text-slate-700 dark:text-slate-200">Second Person</span>
 					</label>
-					<label>
+					<label for="thirdPerson">
 						<input type="radio" name="radio" id="thirdPerson" v-model="thirdPersonPovRef" />
 						<span class="ml-2 text-slate-700 dark:text-slate-200">Third Person</span>
 					</label>
@@ -183,12 +184,9 @@ const resetFields = () => {
 const checkInput = () => {
 	let currentLetter = keywordRef.value.charAt(keywordRef.value.length - 1)
 
-	if (currentLetter === " " || currentLetter === ",") {
+	if (currentLetter === ",") {
 		if (currentLetter === ",") {
 			if (keywordRef.value === ",") return keywordRef.value = "";
-		}
-		if (currentLetter === " ") {
-			if (keywordRef.value === " ") return keywordRef.value = "";
 		}
 
 		addKeyword(keywordRef.value)
